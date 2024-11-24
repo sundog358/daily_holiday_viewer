@@ -1,5 +1,3 @@
----
-
 ## 🛠️ Step-by-Step Guide
 
 ### **1️⃣ Set Up the Flask Application**
