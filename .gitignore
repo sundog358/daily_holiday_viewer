@@ -1,0 +1,41 @@
+# Python compiled files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+
+# Environment files
+.env
+venv/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Static assets
+static/style.css.map
+static/*.tmp
+static/.sass-cache/
+
+# Node modules (if any)
+node_modules/
+
+# IDE-specific files
+.idea/
+.vscode/
+*.iml
+
+# Test and temporary files
+*.bak
+*.tmp
+*.old
+*.test
+coverage/
+*.coverage
+.nyc_output/
+
+# Flask instance and uploads
+instance/
+uploads/
