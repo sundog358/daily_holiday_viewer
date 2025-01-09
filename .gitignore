@@ -39,3 +39,4 @@ coverage/
 # Flask instance and uploads
 instance/
 uploads/
+.vercel
