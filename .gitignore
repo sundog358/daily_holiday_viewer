@@ -40,3 +40,9 @@ coverage/
 instance/
 uploads/
 .vercel
+
+# Notes and Md files
+
+*.md
+*.ipynb
+*.txt
