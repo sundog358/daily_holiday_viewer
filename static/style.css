@@ -1,60 +1,131 @@
+/* ============================================================================
+   Stylesheet for Daily Holiday Viewer
+   Author: Sun & Rain Works
+   Purpose: Defines styles for layout, components, and responsiveness.
+============================================================================ */
+
+/* Global Content Container */
 .content {
   width: 420px;
   min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Holidays Section */
 .holidays-html {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 88vh;
-  scrollbar-width: thin;
+  scrollbar-width: thin; /* For modern browsers */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
 
+.holidays-html::-webkit-scrollbar {
+  width: 8px;
+}
+
+.holidays-html::-webkit-scrollbar-thumb {
+  background-color: #180d5a;
+  border-radius: 4px;
+}
+
+/* Base Container */
 .base {
   height: 400px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
 }
 
+/* Form Elements */
 input,
 select {
   width: 300px;
   height: 40px;
+  border: 1px solid #208d05;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 }
 
+input:focus,
+select:focus {
+  border-color: #36c;
+  box-shadow: 0 0 5px rgba(54, 108, 204, 0.5);
+}
+
+/* Buttons */
 .btn-submit {
   width: 300px;
+  height: 40px;
+  background-color: #36c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-submit:hover {
+  background-color: #2a4b8d;
 }
 
 .btn {
   cursor: pointer;
   align-content: center;
   background-color: transparent;
+  border: none;
+  padding: 0;
+  transition: color 0.2s ease-in-out;
 }
 
+.btn:hover {
+  color: #2a4b8d;
+}
+
+/* Background Colors */
 .bg-primary {
   background-color: #36c !important;
+  color: rgb(224, 244, 4);
 }
 
 .bg-primary-dark {
   background-color: #2a4b8d !important;
+  color: white;
 }
 
 .bg-secondary {
   background-color: #eaecf0 !important;
+  color: #0930af;
 }
 
+/* Header Bar */
 .header-bar {
   height: 48px;
   display: flex;
-  flex: 1;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background-color: rgb(34, 93, 211);
+  color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Center Alignment Helper */
 .filler {
   flex-grow: 1;
   text-align: center;
 }
 
+/* Typography */
 h2 {
   display: none;
 }
@@ -62,16 +133,36 @@ h2 {
 ul {
   margin: 5px;
   padding: 0;
+  list-style: none;
 }
 
 li {
-  list-style-type: none;
   margin-bottom: 4px;
   background-color: white;
   padding: 8px;
   border-radius: 5px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 ul li li {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  margin-left: 10px;
+  box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.1);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .content {
+    width: 90%;
+  }
+
+  input,
+  select,
+  .btn-submit {
+    width: 100%;
+  }
+
+  .header-bar {
+    flex-wrap: wrap;
+    text-align: center;
+  }
 }

@@ -1,44 +1,88 @@
-<title>Holidays</title>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ header or "Holidays Viewer" }}</title>
 
-<link
-  rel="stylesheet"
-  href="//tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
-/>
-<link
-  rel="stylesheet"
-  href="//tools-static.wmflabs.org/fontcdn/css?family=Material+Icons"
-/>
-<link rel="stylesheet" href="static/style.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
+    />
 
-<script src="//tools-static.wmflabs.org/cdnjs/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="static/update-links.js"></script>
+    <!-- Material Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
 
-<div class="content bg-secondary rounded m-auto">
-  <div class="title-bar bg-primary-dark text-white pl-2">
-    <small>Holidays and observances</small>
-  </div>
-  <div class="header-bar bg-primary text-white shadow p-2">
-    {% if request.path != url_for('list_holidays') %}
-    <a class="btn text-white" href="{{ url_for('list_holidays') }}">
-      <i class="material-icons">arrow_back</i>
-    </a>
-    {% endif %}
-    <h5>{{header}}</h5>
-    <div class="filler"></div>
-    <a class="btn text-white" href="{{ url_for('add') }}">
-      <i class="material-icons">add</i>
-    </a>
-    <a class="btn text-white" href="{{ url_for('search') }}">
-      <i class="material-icons">search</i>
-    </a>
-  </div>
-  {% with messages = get_flashed_messages() %} {% if messages %}
-  <div class="alert alert-primary mb-0" role="alert">
-    {% for message in messages %} {{ message }} {% endfor %}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">×</span>
-    </button>
-  </div>
-  {% endif %} {% endwith %} {% block content %}{% endblock %}
-</div>
-<script src="//tools-static.wmflabs.org/cdnjs/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Custom Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="content bg-secondary rounded m-auto">
+      <!-- Title Bar -->
+      <div class="title-bar bg-primary-dark text-white pl-2">
+        <small>Holidays and Observances</small>
+      </div>
+
+      <!-- Header Bar -->
+      <div class="header-bar bg-primary text-white shadow p-2">
+        {% if request.path != url_for('list_holidays') %}
+        <a
+          class="btn text-white"
+          href="{{ url_for('list_holidays') }}"
+          aria-label="Go back"
+        >
+          <i class="material-icons">arrow_back</i>
+        </a>
+        {% endif %}
+        <h5>{{ header or "Welcome to Holidays Viewer" }}</h5>
+        <div class="filler"></div>
+        <a
+          class="btn text-white"
+          href="{{ url_for('add') }}"
+          aria-label="Add Holiday"
+        >
+          <i class="material-icons">add</i>
+        </a>
+        <a
+          class="btn text-white"
+          href="{{ url_for('search') }}"
+          aria-label="Search Holidays"
+        >
+          <i class="material-icons">search</i>
+        </a>
+      </div>
+
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <div class="alert alert-primary mb-0" role="alert">
+        {% for message in messages %} {{ message }} {% endfor %}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      {% endif %} {% endwith %}
+
+      <!-- Main Content -->
+      {% block content %}
+      <p class="text-center">Welcome to the Holidays Viewer App</p>
+      {% endblock %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='update-links.js') }}"></script>
+  </body>
+</html>
