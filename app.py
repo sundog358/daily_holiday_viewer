@@ -329,5 +329,7 @@ def add():
 
     return render_template("add.html", header="Add holiday")
 
+app = APP  # Expose APP as app for Vercel compatibility
+
 if __name__ == "__main__":
     APP.run()
